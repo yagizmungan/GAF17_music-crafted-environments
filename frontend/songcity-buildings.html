@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Song City - Buildings</title>
+    <meta name="Song City" content="Gray Area Festival 2017 - A-Frame">
+    <script src="./js/aframe.js"></script>
+    <script src="./js/components/aframe-audioanalyser-component.js"></script>    
+    <script src="./js/components/audioanalyser-volume-bind.js"></script>
+    <script src="./js/components/scale-y-color.js"></script>
+    <script src="./js/components/song-city-buildings.js"></script>
+  </head>
+  <body>
+    <!-- This is the A-Frame section -->
+    <a-scene stats>
+      <!-- Assets and presets -->
+      <a-assets>
+        <texture id="skyTexture" crossorigin autoplay src="./assets/images/sechelt-sky.jpg"></texture>
+        <audio id="song" crossorigin autoplay src="./assets/audio/BC-TavernOfHeroes.mp3"></audio>
+        <!-- try wireframe: true or remove shader:flat as material settings-->
+        <a-mixin id="building"
+          geometry="primitive: box"
+          material="
+            color: rgb(10, 20, 50); 
+            flatShading:true;
+            shader:flat
+          "
+          scale-y-color="
+            from: 30 30 30; 
+            to: 250, 250, 250; 
+            maxScale: 45
+          "
+          flatShading="true"
+          position="{x: 0, y: 0, z: 0}"
+        ></a-mixin>
+      </a-assets>
+      <!-- End of Assets and presets -->
+
+
+      <!-- General Environment -->
+      <!-- Global Light -->
+      <a-light type="ambient" color="#ffffff"></a-light>
+
+      <!-- Ground -->
+      <a-entity id="ground"
+        geometry="primitive: plane; height: 10000; width: 10000" 
+        material="side: double; color: rgb(5,5,5)"
+        position="0 -0.1 0"
+        rotation="-90 0 0"
+      ></a-entity>
+
+      <!-- Sky -->
+      <a-sky color="#111123"></a-sky>
+      <!-- <a-sky src="#skyTexture"></a-sky> -->
+      <!-- End of General Environment -->
+
+      
+      <!-- Functional Components -->
+      <!-- Camera with wasd controllers -->      
+      <a-entity camera look-controls wasd-controls="fly: true;" 
+        position="-20 100 100">
+      </a-entity>
+
+      <!-- Audio anaylyser -->
+      <a-entity id="analyser"
+        audioanalyser="src: #song"
+        rotation="90 0 0"
+        position="0 0 0"
+      ></a-entity>
+      <!-- End of Functional Components -->
+
+      <!-- Experience-specific Components -->
+      <a-entity id="buildings"
+        song-city="
+          analyserEl: #analyser; 
+          maxScale: 50; 
+          multiplier: 0.06; 
+          frequencyDivisions: 16; 
+          buildingMixin: building;
+          layout: layout-mixin
+        "
+        position="0 0 0"
+      ></a-entity>
+      <!-- End of Experience-specific Components -->
+    </a-scene>
+  </body>
+</html>

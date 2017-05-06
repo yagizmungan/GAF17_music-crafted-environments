@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Song City - Ambient Lights</title>
+    <meta name="Song City" content="Gray Area Festival 2017 - A-Frame">
+    <script src="./js/aframe.js"></script>
+    <script src="./js/components/aframe-audioanalyser-component.js"></script>    
+    <script src="./js/components/audioanalyser-volume-bind.js"></script>
+    <script src="./js/components/scale-y-color.js"></script>
+    <script src="./js/components/song-city-audioanalyser.js"></script>
+  </head>
+  <body>
+    <!-- This is the A-Frame section -->
+    <a-scene stats>
+      <!-- Assets and presets -->
+      <a-assets>
+        <texture id="skyTexture" crossorigin autoplay src="./assets/images/sechelt-sky.jpg"></texture>
+        <audio id="song" crossorigin autoplay src="./assets/audio/BC-TavernOfHeroes.mp3"></audio>
+      </a-assets>
+      <!-- End of Assets and presets -->
+
+      <!-- General Environment -->
+      <!-- Global Light -->
+      <a-light type="ambient" color="#ffffff"></a-light>
+
+      <!-- Ground -->
+      <a-entity id="ground"
+        geometry="primitive: plane; height: 10000; width: 10000" 
+        material="side: double; color: rgb(5,5,5)"
+        position="0 -0.1 0"
+        rotation="-90 0 0"
+      ></a-entity>
+
+      <!-- Sky -->
+      <a-sky color="#111123"></a-sky>
+      <!-- <a-sky src="#skyTexture"></a-sky> -->
+      <!-- End of General Environment -->
+
+      
+      <!-- Functional Components -->
+      <!-- Camera with wasd controllers -->      
+      <a-entity camera look-controls wasd-controls="fly: true;" 
+        position="-20 100 100">
+      </a-entity>
+
+      <!-- Audio anaylyser -->
+      <a-entity id="analyser"
+        audioanalyser="src: #song"
+        rotation="90 0 0"
+        position="0 0 0"
+      ></a-entity>
+      <!-- End of Functional Components -->
+
+      <!-- Experience-specific Components -->
+      <a-entity id="buildings"
+        song-city="
+          analyserEl: #analyser; 
+        "
+        position="0 0 0"
+      ></a-entity>
+      <!-- End of Experience-specific Components -->
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "A-Frame-workshop",
+  "version": "0.0.1",
+  "description": "A-Frame workshop",
+  "main": "gulpfile.js",
+  "scripts": {},
+  "author": "yagiz.mungan@gmail.com",
+  "license": "",
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "cheerio": "^0.20.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.0.7",
+    "mkdirp": "^0.5.1"
+  }
+}

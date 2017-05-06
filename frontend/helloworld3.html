@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello World 3</title>
+    <meta name="Hello World 3" content="Gray Area Festival 2017 - A-Frame">
+    <script src="./js/aframe.js"></script>
+  </head>
+  <body>
+    <!-- This is the A-Frame section -->
+    <a-scene stats>
+      <!-- Assets and presets -->
+      <a-assets>
+        <a-image id="skyTexture" crossorigin autoplay src="./assets/images/sechelt-sky.jpg"></a-image>
+        <a-mixin id="rotationAnimation" 
+          attribute="rotation"
+          dur="10000"
+          fill="forwards"
+          to="0 360 0"
+          repeat="indefinite">
+        </a-mixin>
+      </a-assets>
+      <!-- End of Assets and presets -->
+
+      <!-- General Environment -->
+      <!-- Global Light -->
+      <a-light type="ambient" color="#ffffff"></a-light>
+
+      <!-- Ground -->
+      <a-entity id="ground"
+        geometry="primitive: plane; height: 100; width: 100" 
+        material="side: double; color: rgb(5,5,5)"
+        position="0 0 0"
+        rotation="-90 0 0"
+      ></a-entity>
+
+      <!-- Sky -->
+      <a-sky src="#skyTexture"></a-sky>
+      <!-- End of General Environment -->
+
+      <!-- Level -->
+      <a-light type="point" color="red" position="0 5 -4" intensity="1">
+        <a-sphere position="0 0 0" color="#ff0000" radius="0.1"></a-sphere>
+        <a-animation 
+          attribute="position" 
+          from="-10 5 -4" 
+          to="10 5 -4" 
+          duration="5000" 
+          repeat="indefinite" 
+          direction="alternate" 
+          easing="ease-in-out-cubic">          
+        </a-animation>
+      </a-entity>
+
+      </a-light>
+      <a-box position="-1 0.5 -4" color="#ff0000" wireframe="true">
+        <a-animation attribute="rotation"
+          dur="10000"
+          fill="forwards"
+          to="0 360 0"
+          repeat="indefinite">
+        </a-animation>
+      </a-box>
+      <a-sphere position="0 0.5 -4" color="#00ff00" radius="0.5" >
+        <a-animation attribute="rotation"
+          dur="10000"
+          fill="forwards"
+          to="0 360 0"
+          repeat="indefinite">
+        </a-animation>
+      </a-sphere>
+      <a-cone position="1 0.5 -4" color="#0000ff" radius-bottom="0.5" radius-top="0">        
+      </a-cone>
+      <a-entity position="2.5 0.5 -4" id="best-entity" geometry="primitive:dodecahedron" material="flatShading:true; color:#c0c0c0; metalness:1;">
+        <a-animation mixin="rotationAnimation">
+        </a-animation>
+      </a-entity>
+      <!-- Level -->
+
+      <!-- Functional Objects -->
+      <a-camera></a-camera>
+      <!-- End of Functional Objects -->
+    </a-scene>
+  </body>
+</html>

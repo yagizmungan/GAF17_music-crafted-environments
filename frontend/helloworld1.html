@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello World 1</title>
+    <meta name="Hello World 1" content="Gray Area Festival 2017 - A-Frame">
+    <script src="./js/aframe.js"></script>
+  </head>
+  <body>
+    <!-- This is the A-Frame section -->
+    <a-scene>
+      <!-- Assets and presets -->
+      <a-assets>
+        <a-image id="skyTexture" crossorigin autoplay src="./assets/images/sechelt-sky.jpg"></a-image>
+      </a-assets>
+      <!-- End of Assets and presets -->
+
+      <!-- General Environment -->
+      <!-- Global Light -->
+      <a-light type="ambient" color="#ffffff"></a-light>
+
+      <!-- Ground -->
+      <a-entity id="ground"
+        geometry="primitive: plane; height: 100; width: 100" 
+        material="side: double; color: rgb(5,5,5)"
+        position="0 0 0"
+        rotation="-90 0 0"
+      ></a-entity>
+
+      <!-- Sky -->
+      <a-sky src="#skyTexture"></a-sky>
+      <!-- End of General Environment -->
+
+      <!-- Level -->
+      <a-box position="-1 0.5 -4" color="#ff0000"></a-box>
+      <a-sphere position="0 0.5 -4" color="#00ff00" radius="0.5"></a-sphere>
+      <a-cone position="1 0.5 -4" color="#0000ff" radius-bottom="0.5" radius-top="0"></a-cone>
+      <!-- Level -->
+    </a-scene>
+  </body>
+</html>
