@@ -39,8 +39,6 @@ AFRAME.registerComponent('song-city', {
   tick: function (time) {
     // if the song has not ended
     if(!this.songEnded){
-      // calculate the new Z
-      this.containerZ = time * this.data.zSpeed;
     }
     else {
       // final processing after the song is over      
