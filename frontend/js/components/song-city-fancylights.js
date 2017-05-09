@@ -13,7 +13,6 @@ AFRAME.registerComponent('song-city', {
     multiplier: {default: 100},
     frequencyDivisions: {default: 128},
     buildingMixin: {default: ''},
-    layout: {default: ''},
     fancyLightsEl: {type: 'selector'},
     zSpeed: {default: 0.01},
   },
